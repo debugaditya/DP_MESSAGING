@@ -1,0 +1,124 @@
+:root {
+    --bg-dark-primary: #0D1117;
+    --bg-dark-secondary: #161B22;
+    --border-color: #30363D;
+    --text-primary: #C9D1D9;
+    --text-secondary: #8B949E;
+    --accent-green: #238636;
+    --accent-green-bright: #39D353;
+    --font-primary: 'Inter', sans-serif;
+    --font-display: 'Oxanium', sans-serif;
+}
+
+/* --- Main Search Component Container --- */
+.search-section {
+    width: 100%;
+    max-width: 800px; /* Or your preferred max-width */
+    position: relative; /* This is crucial for positioning the dropdown */
+    margin-bottom: 24px; /* Adds space below the search bar and its results */
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+/* --- Search Input Form --- */
+.search-section form {
+    display: flex;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 12px 16px;
+    background-color: var(--bg-dark-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent-green-bright);
+    box-shadow: 0 0 0 3px rgba(57, 211, 83, 0.3);
+}
+
+/* --- Search Results as a Dropdown List --- */
+.search-results-container {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px; /* Space below the search bar */
+    background-color: var(--bg-dark-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-height: 400px;
+    overflow-y: auto;
+    
+    /* Positioning to make it a dropdown */
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.search-result-card {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-result-card:last-child {
+    border-bottom: none;
+}
+
+.search-result-card:hover {
+    background-color: rgba(139, 148, 158, 0.1);
+}
+
+.search-result-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Makes the image circular */
+    margin-right: 16px;
+    object-fit: cover;
+}
+
+.search-result-card .result-info {
+    text-align: left;
+}
+
+.search-result-card .result-info h3 {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin: 0 0 2px 0;
+}
+
+.search-result-card .result-info p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.search-status-message {
+    width: 100%;
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 20px;
+    font-size: 1rem;
+}
+
+/* --- Custom Scrollbar for Vertical Scrolling --- */
+.search-results-container::-webkit-scrollbar {
+    width: 8px;
+}
+.search-results-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.search-results-container::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 4px;
+}

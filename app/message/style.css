@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Oxanium:wght@500;700&display=swap');
+
+        :root {
+            --bg-dark-primary: #0A0A0A;
+            --card-bg: rgba(15, 30, 35, 0.9);
+            --card-border: rgba(70, 120, 100, 0.4);
+            --text-primary: #E6E6E6;
+            --text-secondary: #B0C0B0;
+            --accent-green: #00FF80;
+            --accent-green-glow: rgba(0, 255, 128, 0.4);
+            --font-primary: 'Outfit', sans-serif;
+            --font-display: 'Oxanium', monospace;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-primary);
+            background-color: var(--bg-dark-primary);
+            color: var(--text-primary);
+        }
+
+        .message-page {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--bg-dark-primary);
+            overflow: hidden;
+        }
+
+        /* This is a placeholder for your actual sidebar component */
+        .sidebar-placeholder {
+            width: 250px;
+            flex-shrink: 0;
+            background-color: #0D1117;
+            border-right: 1px solid var(--card-border);
+            position: fixed; /* Assuming the sidebar is fixed */
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: 100;
+        }
+
+        .message-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            margin-left: 42px; /* Pushes content to the right of the sidebar */
+            width: calc(100% - 250px); /* Ensures it takes up the remaining width */
+        }
+
+        .message-content > p {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-top: 40px;
+        }
+
+        .message-content .error {
+            color: var(--accent-red);
+        }
+
+        .message-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto;
+            height: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .message-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .message-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .message-list::-webkit-scrollbar-thumb {
+            background-color: var(--accent-green);
+            border-radius: 4px;
+        }
+
+        .message-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid var(--card-border);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .message-item:last-child {
+            border-bottom: none;
+        }
+
+        .message-item:hover {
+            background-color: rgba(0, 255, 128, 0.1);
+        }
+
+        .profile-pic {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            margin-right: 16px;
+            object-fit: cover;
+            border: 2px solid var(--accent-green);
+        }
+
+        .message-info {
+            flex-grow: 1;
+        }
+
+        .message-info h2 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            text-shadow: 0 0 8px var(--accent-green-glow);
+            margin: 0 0 4px 0;
+        }
+
+        .message-info p {
+            font-family: var(--font-primary);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .message-count-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-green);
+            color: var(--bg-dark-primary);
+            min-width: 28px;
+            height: 28px;
+            padding: 4px 8px;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            box-shadow: 0 0 10px var(--accent-green-glow);
+        }
+
+        .message-icon {
+            display: none;
+        }
+
+        /* --- Responsive Adjustments --- */
+
+        @media (max-width: 1024px) {
+            .message-content {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .message-page {
+                overflow-y: auto;
+                height: auto;
+            }
+            .sidebar-placeholder {
+                width: 100%;
+                height: 60px; /* Example height for mobile top-bar */
+                border-right: none;
+                border-bottom: 1px solid var(--card-border);
+            }
+            .message-content {
+                margin-left: 0; /* Remove side margin */
+                margin-top: 60px; /* Add top margin for the sidebar */
+                width: 100%; /* Take full width */
+                padding: 12px;
+            }
+            .message-item {
+                padding: 12px;
+            }
+            .profile-pic {
+                width: 48px;
+                height: 48px;
+            }
+            .message-info h2 {
+                font-size: 1.1rem;
+            }
+            .message-info p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .message-content {
+                padding: 8px;
+            }
+            .profile-pic {
+                width: 40px;
+                height: 40px;
+                margin-right: 12px;
+            }
+            .message-info h2 {
+                font-size: 1rem;
+            }
+            .message-count-wrapper {
+                min-width: 24px;
+                height: 24px;
+                font-size: 0.8rem;
+            }
+        }

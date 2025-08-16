@@ -1,0 +1,479 @@
+:root {
+
+    --bg-dark-primary: #0D1117;
+
+    --bg-dark-secondary: #161B22;
+
+    --border-color: #30363D;
+
+    --text-primary: #C9D1D9;
+
+    --text-secondary: #8B949E;
+
+    --accent-green: #238636;
+
+    --accent-green-bright: #39D353;
+
+    --accent-red: #DA3633;
+
+    --font-primary: 'Inter', sans-serif;
+
+    --font-display: 'Oxanium', sans-serif;
+
+}
+
+
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+
+body {
+
+    font-family: var(--font-primary);
+
+    background-color: var(--bg-dark-primary);
+
+    color: var(--text-primary);
+
+    display: flex;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+}
+
+
+
+.sidebar {
+
+    width: 250px;
+
+    background-color: var(--bg-dark-primary);
+
+    flex-shrink: 0;
+
+}
+
+
+
+.page-container {
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    padding: 24px 32px;
+
+    flex-grow: 1;
+
+}
+
+
+
+.main-content {
+
+    flex-grow: 1;
+
+    display: flex;
+
+    gap: 24px;
+
+    overflow: hidden;
+
+}
+
+
+
+.friends-list,
+
+.friend-reqs,
+
+.stalkers {
+
+    background-color: var(--bg-dark-secondary);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 8px;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    height: calc(100vh - 180px);
+
+    overflow-y: auto;
+
+}
+
+
+
+.friends-list::-webkit-scrollbar,
+
+.friend-reqs::-webkit-scrollbar,
+
+.stalkers::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+
+
+.friends-list::-webkit-scrollbar-track,
+
+.friend-reqs::-webkit-scrollbar-track,
+
+.stalkers::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+
+
+.friends-list::-webkit-scrollbar-thumb,
+
+.friend-reqs::-webkit-scrollbar-thumb,
+
+.stalkers::-webkit-scrollbar-thumb {
+
+    background-color: var(--border-color);
+
+    border-radius: 4px;
+
+}
+
+
+
+.friends-list>h2,
+
+.friend-reqs>h2,
+
+.stalkers>h2 {
+
+    font-family: var(--font-display);
+
+    color: var(--text-secondary);
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.05em;
+
+    text-transform: uppercase;
+
+    padding: 16px 20px;
+
+    border-bottom: 1px solid var(--border-color);
+
+    flex-shrink: 0;
+
+    position: sticky;
+
+    top: 0;
+
+    background-color: var(--bg-dark-secondary);
+
+    z-index: 1;
+
+}
+
+
+
+.friend-card,
+
+.friend-request-card,
+
+.stalker-card {
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 16px 20px;
+
+    border-bottom: 1px solid var(--border-color);
+
+    transition: background-color 0.2s ease;
+
+}
+
+
+
+.friend-card:last-child,
+
+.friend-request-card:last-child,
+
+.stalker-card:last-child {
+
+    border-bottom: none;
+
+}
+
+
+
+.friend-card:hover,
+
+.friend-request-card:hover,
+
+.stalker-card:hover {
+
+    background-color: rgba(139, 148, 158, 0.1);
+
+}
+
+
+
+.friend-card img,
+
+.friend-request-card img,
+
+.stalker-card img {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 50%;
+
+    border: 2px solid var(--border-color);
+
+    margin-right: 16px;
+
+    object-fit: cover;
+
+}
+
+
+
+.friend-info,
+
+.stalker-info {
+
+    flex-grow: 1;
+
+}
+
+
+
+.friend-info h2,
+
+.stalker-info h2 {
+
+    font-weight: 600;
+
+    color: var(--text-primary);
+
+    font-size: 1rem;
+
+    margin-bottom: 4px;
+
+}
+
+
+
+.friend-info p,
+
+.stalker-info p {
+
+    font-size: 0.875rem;
+
+    color: var(--text-secondary);
+
+}
+
+
+
+.stalker-info .frequency {
+
+    font-size: 0.8rem;
+
+    color: var(--accent-green-bright);
+
+    margin-top: 6px;
+
+}
+
+
+
+.friend-card button,
+
+.friend-request-card button {
+
+    border: 1px solid var(--border-color);
+
+    font-weight: 600;
+
+    padding: 6px 14px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 0.875rem;
+
+    transition: all 0.2s ease;
+
+    margin-left: 8px;
+
+}
+
+
+
+.friend-card button {
+
+    background-color: #21262D;
+
+    color: var(--accent-red);
+
+}
+
+
+
+.friend-card button:hover {
+
+    background-color: var(--accent-red);
+
+    color: #FFFFFF;
+
+    border-color: var(--accent-red);
+
+}
+
+
+
+.accept-btn {
+
+    background-color: #21262D;
+
+    color: var(--accent-green-bright);
+
+}
+
+
+
+.accept-btn:hover {
+
+    background-color: var(--accent-green);
+
+    color: #FFFFFF;
+
+    border-color: var(--accent-green);
+
+}
+
+
+
+.reject-btn {
+
+    background-color: transparent;
+
+    color: var(--text-secondary);
+
+}
+
+
+
+.reject-btn:hover {
+
+    background-color: #21262D;
+
+    color: var(--text-primary);
+
+}
+
+
+
+.no-data-message {
+
+    flex-grow: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: var(--text-secondary);
+
+    font-size: 0.95rem;
+
+    padding: 20px;
+
+}
+
+
+
+@media (max-width: 1024px) {
+
+    .page-container {
+
+        padding: 24px;
+
+    }
+
+    .main-content {
+
+        gap: 24px;
+
+    }
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    body {
+
+        flex-direction: column;
+
+    }
+
+    .page-container {
+
+        padding: 16px;
+
+    }
+
+    .main-content {
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        height: auto;
+
+    }
+
+    .friends-list,
+
+    .friend-reqs,
+
+    .stalkers {
+
+        min-height: 250px;
+
+        height: auto;
+
+    }
+
+}
