@@ -1,6 +1,5 @@
-export default nextConfig;
-// next.config.mjs
-/** @type {import('next').NextConfig} */
+
+// next.config.m/** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: false,
   async headers() {
