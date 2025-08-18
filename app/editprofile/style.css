@@ -10,7 +10,8 @@
     padding: 0;
 }
 
-body, html {
+body,
+html {
     height: 100%;
     font-family: 'Outfit', sans-serif;
     background: linear-gradient(135deg, #0A0A0A, #10181A, #0A1512);
@@ -27,13 +28,12 @@ body, html {
     padding: 3rem;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7),
-                0 0 0 1px rgba(70, 120, 100, 0.2);
+        0 0 0 1px rgba(70, 120, 100, 0.2);
     width: 100%;
     max-width: 420px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     text-align: center;
-    position: relative;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
 }
@@ -74,7 +74,7 @@ input:focus {
     outline: none;
     border-color: #00FF80;
     box-shadow: 0 0 0 3px rgba(0, 255, 128, 0.4),
-                inset 0 1px 6px rgba(0, 0, 0, 0.6);
+        inset 0 1px 6px rgba(0, 0, 0, 0.6);
     background-color: rgba(25, 45, 50, 0.9);
     transform: none;
 }
@@ -133,6 +133,7 @@ button:hover {
     box-shadow: 0 0 12px rgba(0, 255, 128, 0.4);
     transition: transform 0.3s ease;
 }
+
 .profile-pic:hover {
     transform: scale(1.05);
 }
@@ -180,8 +181,13 @@ input[type="file"]::file-selector-button:hover {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Responsive Adjustments */

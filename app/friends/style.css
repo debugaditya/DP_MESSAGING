@@ -87,7 +87,8 @@ body {
     flex-grow: 1;
 
     display: flex;
-
+    flex-wrap: wrap;
+    /* Allow items to wrap */
     gap: 24px;
 
     overflow: hidden;
@@ -108,8 +109,8 @@ body {
 
     border-radius: 8px;
 
-    flex: 1;
-
+    flex: 1 1 300px;
+    /* Flex-grow, flex-shrink, and flex-basis */
     display: flex;
 
     flex-direction: column;
@@ -425,17 +426,15 @@ body {
 @media (max-width: 1024px) {
 
     .page-container {
-
         padding: 24px;
-
     }
 
-    .main-content {
-
-        gap: 24px;
-
+    .friends-list,
+    .friend-reqs,
+    .stalkers {
+        flex-basis: calc(50% - 12px);
+        /* Two columns */
     }
-
 }
 
 
@@ -443,37 +442,30 @@ body {
 @media (max-width: 768px) {
 
     body {
-
-        flex-direction: column;
-
+        overflow: auto;
+        /* Allow body to scroll on mobile */
     }
 
     .page-container {
-
         padding: 16px;
-
+        height: auto;
     }
 
     .main-content {
-
         flex-direction: column;
-
         gap: 16px;
-
         height: auto;
-
+        overflow: visible;
     }
 
     .friends-list,
-
     .friend-reqs,
-
     .stalkers {
-
+        flex-basis: auto;
+        /* Let them take full width */
         min-height: 250px;
-
-        height: auto;
-
+        height: 50vh;
+        /* Give them a good portion of the viewport height */
     }
 
 }

@@ -12,18 +12,16 @@
     --card-bg: #0A0A0A;
     --card-border: rgba(70, 120, 100, 0.4);
     --text-primary: #E6E6E6;
-    --text-secondary: #B0C0B0;
+    --text-secondary: #8A9A9D;
     --text-dark: #000000;
-    /* Dark text for light backgrounds, now black */
     --accent-green: #00FF80;
     --sent-bubble-bg: #005C4B;
     --received-bubble-bg: #FFFFFF;
-    /* Changed to white */
+    --seen-blue: #53BDEB;
     --font-primary: 'Outfit', sans-serif;
     --font-display: 'Oxanium', monospace;
 }
 
-/* This is the main wrapper for the entire page. It uses flexbox. */
 .page-wrapper {
     display: flex;
     height: 100vh;
@@ -31,7 +29,6 @@
     background-color: var(--bg-dark-primary);
 }
 
-/* The chat container will now automatically fill the remaining space. */
 .chat-container {
     flex-grow: 1;
     display: flex;
@@ -39,7 +36,6 @@
     height: 100vh;
     overflow: hidden;
     background-color: var(--bg-dark-primary);
-    /* Changed to solid dark background */
 }
 
 .chat-header {
@@ -50,6 +46,7 @@
     border-bottom: 1px solid var(--card-border);
     flex-shrink: 0;
     z-index: 2;
+    cursor: pointer;
 }
 
 .chat-header .profile-photo {
@@ -96,6 +93,8 @@
     max-width: 75%;
     word-wrap: break-word;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .message p {
@@ -110,8 +109,6 @@
     border-bottom-right-radius: 2px;
     color: var(--text-primary);
     font-family: 'Outfit', sans-serif;
-
-    /* Ensures text is light */
 }
 
 .message.received {
@@ -120,7 +117,6 @@
     border-bottom-left-radius: 2px;
     color: var(--text-dark);
     font-family: 'Outfit', sans-serif;
-    /* Ensures text is dark */
 }
 
 .message-form {
@@ -168,10 +164,49 @@
 }
 
 .error-message {
-    color: var(--accent-red);
+    color: #FF5252;
     text-align: center;
     padding: 20px;
 }
+
+/* --- Styles for Time and Seen Ticks --- */
+
+.message-meta {
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+    margin-top: 4px;
+    height: 15px;
+}
+
+.message-time {
+    font-size: 0.7rem;
+    margin-right: 5px;
+}
+
+.sent .message-time {
+    color: var(--text-secondary);
+}
+
+.received .message-time {
+    color: #667781;
+}
+
+.seen-ticks {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.seen-ticks.grey {
+    color: var(--text-secondary);
+}
+
+.seen-ticks.blue {
+    color: var(--seen-blue);
+}
+
+/* --- Responsive Styles --- */
 
 @media (max-width: 768px) {
     .page-wrapper {

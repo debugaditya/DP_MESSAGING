@@ -10,6 +10,8 @@ export async function POST(request) {
     const collection = db.collection('MESSAGES');
     try {
         const result=await collection.insertOne({
+            CID: `${sender}_${receiver}`, // Unique conversation ID
+            // Ensure CID is unique for each conversation
             FROM: sender,
             TO: receiver,
             TEXT: message,

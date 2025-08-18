@@ -32,8 +32,8 @@ export const offMessageReceive = (handler) => {
   socket.off('receive-message', handler);
 };
 
-export const sendNotification = (recipientId, type) => {
-  socket.emit('send-notification', { to: recipientId, type:type });
+export const sendNotification = (senderId, recipientId, type) => {
+  socket.emit('send-notification', { from: senderId, to: recipientId, type:type });
 };
 
 export const onNotificationReceive = (handler) => {

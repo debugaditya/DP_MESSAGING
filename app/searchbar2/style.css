@@ -13,9 +13,12 @@
 /* --- Main Search Component Container --- */
 .search-section {
     width: 100%;
-    max-width: 800px; /* Or your preferred max-width */
-    position: relative; /* This is crucial for positioning the dropdown */
-    margin-bottom: 24px; /* Adds space below the search bar and its results */
+    max-width: 800px;
+    /* Or your preferred max-width */
+    position: relative;
+    /* This is crucial for positioning the dropdown */
+    margin-bottom: 24px;
+    /* Adds space below the search bar and its results */
     margin-top: 20px;
     margin-left: 20px;
 }
@@ -47,14 +50,15 @@
 .search-results-container {
     list-style: none;
     padding: 0;
-    margin-top: 8px; /* Space below the search bar */
+    margin-top: 8px;
+    /* Space below the search bar */
     background-color: var(--bg-dark-secondary);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     max-height: 400px;
     overflow-y: auto;
-    
+
     /* Positioning to make it a dropdown */
     position: absolute;
     width: 100%;
@@ -81,7 +85,8 @@
 .search-result-card img {
     width: 40px;
     height: 40px;
-    border-radius: 50%; /* Makes the image circular */
+    border-radius: 50%;
+    /* Makes the image circular */
     margin-right: 16px;
     object-fit: cover;
 }
@@ -115,10 +120,31 @@
 .search-results-container::-webkit-scrollbar {
     width: 8px;
 }
+
 .search-results-container::-webkit-scrollbar-track {
     background: transparent;
 }
+
 .search-results-container::-webkit-scrollbar-thumb {
     background-color: var(--border-color);
     border-radius: 4px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .search-section {
+        margin-left: 24px;
+        margin-right: 24px;
+        max-width: none;
+        /* Allow it to shrink */
+    }
+}
+
+@media (max-width: 768px) {
+    .search-section {
+        margin: 16px;
+        /* Consistent margin on all sides */
+        width: calc(100% - 32px);
+        /* Full width minus margins */
+    }
 }

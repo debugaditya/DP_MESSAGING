@@ -16,13 +16,10 @@ export async function POST(request) {
         // Use updateMany to update all matching documents in a single operation
         const result = await collection.updateMany(
             {
-                'TO': admin,       // Find messages sent TO the current user
-                'FROM': username,  // FROM the person they are chatting with
-                'SEEN': false      // That are currently unread
+                CID: `${username}_${admin}`, // Unique conversation ID
+                SEEN: false, // Only update unseen messages
             },
-            {
-                $set: { 'SEEN': true } // Set their status to read
-            }
+            { $set: { SEEN: true } } // Set SEEN to true
         );
 
         return NextResponse.json({ 

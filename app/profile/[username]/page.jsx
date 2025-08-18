@@ -96,6 +96,7 @@ export default function Page() {
                 return;
             }
             else if (state === 'Send request') {
+                socketService.sendNotification(admin, username, "friend-request");
                 response = await fetch(`/api/handle`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -105,7 +106,6 @@ export default function Page() {
                 if (data.status === '200') {
                     setState('Requested');
                     if (socketService && socketService.emit) {
-                        socketService.emit('friendRequestSent', { from: admin, to: username });
                     } else {
                         console.warn('Socket service or emit method not available.');
                     }
