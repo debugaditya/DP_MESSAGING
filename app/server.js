@@ -1,8 +1,10 @@
+const { createServer } = require("http");
 const { Server } = require("socket.io");
 
-const io = new Server(3001, {
+const httpServer = createServer();
+const io = new Server(httpServer, {
   cors: {
-    origin: "*",
+    origin: "*", // In production, you should restrict this to your Vercel URL
   },
 });
 
@@ -13,13 +15,15 @@ function getSocketIdByUserId(userId) {
 }
 
 io.on("connection", (socket) => {
-  const userId = socket.handshake.auth.userId;
-  if (userId) {
-    userSocketMap[userId] = socket.id;
-    console.log(`User connected: ${userId} with socket ID: ${socket.id}`);
-  } else {
-    console.log(`An anonymous user connected with socket ID: ${socket.id}`);
-  }
+  console.log(`A user connected with socket ID: ${socket.id}`);
+
+  // Listen for the user to register themselves with their userId
+  socket.on("register-user", (userId) => {
+    if (userId) {
+      userSocketMap[userId] = socket.id;
+      console.log(`User registered: ${userId} with socket ID: ${socket.id}`);
+    }
+  });
 
   socket.on("send-message", (data) => {
     console.log(`Message from ${data.from} to ${data.to}: ${data.content}`);
@@ -52,4 +56,9 @@ io.on("connection", (socket) => {
   });
 });
 
-console.log("Socket.IO server running on port 3001");
+// Use the port provided by the hosting service, or 3001 for local development
+const PORT = process.env.PORT || 3001;
+
+httpServer.listen(PORT, () => {
+  console.log(`Socket.IO server running on port ${PORT}`);
+});
