@@ -1,6 +1,5 @@
 import { io } from 'socket.io-client';
 
-// The URL for your live server. It will be read from your environment variables.
 const URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:3001';
 
 export const socket = io(URL, {
@@ -11,9 +10,16 @@ export const connectSocket = (userId) => {
   if (socket.connected) {
     return;
   }
-  // Pass the userId in the 'auth' object for registration on the server
-  socket.auth = { userId };
+
+  // Connect to the server
   socket.connect();
+
+  // **THE FIX IS HERE**
+  // Once connected, immediately send the 'register-user' event
+  socket.on('connect', () => {
+    socket.emit('register-user', userId);
+    console.log('Connected and registered as', userId);
+  });
 };
 
 export const disconnectSocket = () => {
