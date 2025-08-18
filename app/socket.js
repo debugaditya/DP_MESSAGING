@@ -1,6 +1,7 @@
 import { io } from 'socket.io-client';
 
-const URL = process.env.LINK || 'http://localhost:3001';
+// The URL for your live server. It will be read from your environment variables.
+const URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:3001';
 
 export const socket = io(URL, {
   autoConnect: false,
@@ -10,6 +11,7 @@ export const connectSocket = (userId) => {
   if (socket.connected) {
     return;
   }
+  // Pass the userId in the 'auth' object for registration on the server
   socket.auth = { userId };
   socket.connect();
 };
