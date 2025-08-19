@@ -220,12 +220,15 @@ body, html {
 .friend-request-card,
 .stalker-card {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding: 16px 20px;
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.2s ease;
-    min-height: 95px; /* For Equal Card Heights */
+}
+
+/* FIX: Make Stalker card smaller by positioning 'Visits' absolutely */
+.stalker-card {
+    position: relative;
 }
 
 .friend-card:last-child,
@@ -238,13 +241,6 @@ body, html {
 .friend-request-card:hover,
 .stalker-card:hover {
     background-color: rgba(139, 148, 158, 0.1);
-}
-
-/* This is a new wrapper for card content to help with layout */
-.card-content {
-    display: flex;
-    align-items: center;
-    width: 100%;
 }
 
 .friend-card img,
@@ -277,16 +273,16 @@ body, html {
     color: var(--text-secondary);
 }
 
+/* FIX: Position the 'Visits' text */
 .stalker-info .frequency {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
     font-size: 0.8rem;
-    color: var(--accent-green-bright);
-    margin-top: 6px;
-}
-
-/* This is a new wrapper for card actions to help with layout */
-.card-actions {
-    display: flex;
-    margin-left: auto;
+    color: var(--text-secondary);
+    background-color: var(--bg-dark-primary);
+    padding: 2px 6px;
+    border-radius: 4px;
 }
 
 .friend-card button,
@@ -296,120 +292,3 @@ body, html {
     padding: 6px 14px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.875rem;
-    transition: all 0.2s ease;
-    margin-left: 8px;
-}
-
-.friend-card button {
-    background-color: #21262D;
-    color: var(--accent-red);
-}
-
-.friend-card button:hover {
-    background-color: var(--accent-red);
-    color: #FFFFFF;
-    border-color: var(--accent-red);
-}
-
-.accept-btn {
-    background-color: #21262D;
-    color: var(--accent-green-bright);
-}
-
-.accept-btn:hover {
-    background-color: var(--accent-green);
-    color: #FFFFFF;
-    border-color: var(--accent-green);
-}
-
-.reject-btn {
-    background-color: transparent;
-    color: var(--text-secondary);
-}
-
-.reject-btn:hover {
-    background-color: #21262D;
-    color: var(--text-primary);
-}
-
-.no-data-message {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    padding: 20px;
-}
-
-
-/* =================================
-   Loading Spinner
-   ================================= */
-.loading-main {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.spinner {
-  width: 48px;
-  height: 48px;
-  border: 5px solid var(--border-color);
-  border-bottom-color: var(--accent-green-bright);
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-
-/* =================================
-   Responsive Media Queries
-   ================================= */
-@media (max-width: 1030px) {
-    .sidebar {
-        position: fixed;
-        transform: translateX(-100%);
-    }
-
-    .sidebar.open {
-        transform: translateX(0);
-    }
-
-    .hamburger-menu {
-        display: flex;
-    }
-
-    .page-container {
-        width: 100%;
-    }
-
-    /* Horizontal Scrolling for smaller devices */
-    .main-content {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 16px;
-    }
-
-    .friends-list,
-    .friend-reqs,
-    .stalkers {
-        flex-shrink: 0;
-        width: 320px;
-        min-width: 300px;
-    }
-}
