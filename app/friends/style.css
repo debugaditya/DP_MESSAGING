@@ -1,9 +1,95 @@
-/* --- Main Content Area (Adapted for your Sidebar) --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Oxanium:wght@500;700&display=swap');
+
+:root {
+    --bg-dark-primary: #0A0A0A;
+    --bg-dark-secondary: #161B22;
+    --card-bg: rgba(15, 30, 35, 0.9);
+    --card-border: rgba(70, 120, 100, 0.4);
+    --text-primary: #E6E6E6;
+    --text-secondary: #B0C0B0;
+    --accent-green: #00FF80;
+    --accent-green-glow: rgba(0, 255, 128, 0.4);
+    --font-primary: 'Outfit', sans-serif;
+    --font-display: 'Oxanium', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: var(--font-primary);
+    background-color: var(--bg-dark-primary);
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
 .page-wrapper {
     display: flex;
     height: 100vh;
 }
 
+/* --- Sidebar --- */
+.sidebar {
+    width: 250px;
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-right: 1px solid var(--card-border);
+    padding: 20px;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.7);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar li {
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1em;
+    font-weight: 400;
+}
+
+.sidebar li:hover {
+    background-color: rgba(25, 45, 50, 0.7);
+    transform: translateY(-2px);
+}
+
+.sidebar li svg {
+    color: var(--accent-green);
+}
+
+.badge {
+    background: var(--accent-green);
+    color: var(--bg-dark-primary);
+    font-size: 0.75em;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-left: auto;
+    font-weight: 700;
+}
+
+/* --- Main Content Area --- */
 .page-container {
     flex-grow: 1;
     overflow: hidden;
@@ -122,9 +208,72 @@
 .reject-btn:hover { background-color: #21262D; color: var(--text-primary); }
 .no-data-message { flex-grow: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--text-secondary); font-size: 0.95rem; padding: 20px; }
 
+/* --- Hamburger Menu --- */
+.hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    padding: 6px;
+    border-radius: 8px;
+    background: var(--card-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
 
-/* --- Responsive Adjustments for Main Content --- */
+.hamburger-icon {
+    width: 20px;
+    height: 2px;
+    background-color: var(--accent-green);
+    margin: 3px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+    border: 1px solid var(--card-bg);
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.overlay.visible {
+    display: block;
+}
+
+/* --- Responsive Adjustments --- */
 @media (max-width: 1160px) {
+    .sidebar {
+        position: fixed;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
     .page-container {
         width: 100%;
         padding: 16px;
