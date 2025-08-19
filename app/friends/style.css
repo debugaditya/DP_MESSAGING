@@ -8,6 +8,7 @@
     --text-primary: #E6E6E6;
     --text-secondary: #B0C0B0;
     --accent-green: #00FF80;
+    --accent-red: #DA3633;
     --accent-green-glow: rgba(0, 255, 128, 0.4);
     --font-primary: 'Outfit', sans-serif;
     --font-display: 'Oxanium', monospace;
@@ -32,7 +33,6 @@ body, html {
     height: 100vh;
 }
 
-/* --- Sidebar --- */
 .sidebar {
     width: 250px;
     background: var(--card-bg);
@@ -89,7 +89,6 @@ body, html {
     font-weight: 700;
 }
 
-/* --- Main Content Area --- */
 .page-container {
     flex-grow: 1;
     overflow: hidden;
@@ -200,15 +199,49 @@ body, html {
     margin-left: 8px;
 }
 
-.friend-card button { background-color: #21262D; color: var(--accent-red); }
-.friend-card button:hover { background-color: var(--accent-red); color: #FFFFFF; border-color: var(--accent-red); }
-.accept-btn { background-color: #21262D; color: var(--accent-green); }
-.accept-btn:hover { background-color: var(--accent-green); color: #FFFFFF; border-color: var(--accent-green); }
-.reject-btn { background-color: transparent; color: var(--text-secondary); }
-.reject-btn:hover { background-color: #21262D; color: var(--text-primary); }
-.no-data-message { flex-grow: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--text-secondary); font-size: 0.95rem; padding: 20px; }
+.friend-card button {
+    background-color: var(--accent-red);
+    color: #FFFFFF;
+    border-color: var(--accent-red);
+}
 
-/* --- Loading Spinner --- */
+.friend-card button:hover {
+    background-color: #c5302f;
+    border-color: #c5302f;
+}
+
+.accept-btn {
+    background-color: #21262D;
+    color: var(--accent-green);
+}
+
+.accept-btn:hover {
+    background-color: var(--accent-green);
+    color: #FFFFFF;
+    border-color: var(--accent-green);
+}
+
+.reject-btn {
+    background-color: transparent;
+    color: var(--text-secondary);
+}
+
+.reject-btn:hover {
+    background-color: #21262D;
+    color: var(--text-primary);
+}
+
+.no-data-message {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    padding: 20px;
+}
+
 .loading-main {
   flex-grow: 1;
   display: flex;
@@ -237,7 +270,6 @@ body, html {
   }
 }
 
-/* --- Hamburger Menu --- */
 .hamburger-menu {
     display: none;
     position: fixed;
@@ -285,7 +317,6 @@ body, html {
     display: block;
 }
 
-/* --- Responsive Adjustments --- */
 @media (max-width: 1160px) {
     .sidebar {
         position: fixed;
