@@ -30,7 +30,7 @@ body > div:last-child {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(70, 120, 100, 0.4);
     width: 60vw;
     max-width: 500px;
-    height: auto; /* Changed min-height to height: auto; */
+    height: auto;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     text-align: center;
@@ -146,7 +146,6 @@ body > div:last-child {
     margin-top: 50px;
     animation: pulse 1.5s infinite alternate;
 }
-/* Loading Spinner */
 .spinner {
     border: 4px solid rgba(255, 255, 255, 0.1);
     border-top: 4px solid #00FF80;
@@ -173,10 +172,15 @@ body > div:last-child {
         width: 100vw;
     }
     .profile-container {
+        /* MODIFICATION: This is a more reliable centering method */
         position: relative;
-        top: auto;
-        left: auto;
+        top: 0;
+        left: 0;
+        margin: 2rem auto; /* Adds some space from the top */
+        
+        /* Your original styles are preserved below */
         max-width: 450px;
+        width: 90%; /* Ensures it doesn't touch the screen edges */
         padding: 2rem 2.5rem;
         gap: 0.8rem;
     }
@@ -199,5 +203,3 @@ body > div:last-child {
         font-size: 0.8rem;
     }
 }
-
-
