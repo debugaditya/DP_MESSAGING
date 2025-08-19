@@ -156,14 +156,14 @@ body, html {
     width: 100%;
     padding: 24px 32px;
     flex-grow: 1;
-    overflow: hidden; /* Hide overflow on desktop */
+    overflow: hidden;
 }
 
 .main-content {
     flex-grow: 1;
     display: flex;
     gap: 24px;
-    overflow: hidden; /* Hide overflow on desktop */
+    overflow: hidden;
 }
 
 .friends-list,
@@ -175,7 +175,7 @@ body, html {
     flex: 1 1 300px;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 180px); /* Adjust based on searchbar/header height */
+    height: calc(100vh - 180px);
     overflow-y: auto;
 }
 
@@ -220,12 +220,12 @@ body, html {
 .friend-request-card,
 .stalker-card {
     display: flex;
-    flex-direction: column; /* For equal height content alignment */
-    align-items: flex-start; /* Aligns items to the start */
+    flex-direction: column;
+    align-items: flex-start;
     padding: 16px 20px;
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.2s ease;
-    min-height: 95px; /* MODIFICATION: Equal Card Heights */
+    min-height: 95px; /* For Equal Card Heights */
 }
 
 .friend-card:last-child,
@@ -240,14 +240,12 @@ body, html {
     background-color: rgba(139, 148, 158, 0.1);
 }
 
-.friend-card .card-content,
-.friend-request-card .card-content,
-.stalker-card .card-content {
+/* This is a new wrapper for card content to help with layout */
+.card-content {
     display: flex;
     align-items: center;
     width: 100%;
 }
-
 
 .friend-card img,
 .friend-request-card img,
@@ -262,10 +260,10 @@ body, html {
 
 .friend-info,
 .stalker-info {
-    flex-grow: 1; /* MODIFICATION: Pushes buttons to the end */
+    flex-grow: 1;
 }
 
-.friend-info h3, /* Changed from h2 for better semantics */
+.friend-info h3,
 .stalker-info h3 {
     font-weight: 600;
     color: var(--text-primary);
@@ -285,12 +283,11 @@ body, html {
     margin-top: 6px;
 }
 
-.friend-card .card-actions,
-.friend-request-card .card-actions {
+/* This is a new wrapper for card actions to help with layout */
+.card-actions {
     display: flex;
-    margin-left: auto; /* Pushes buttons to the right */
+    margin-left: auto;
 }
-
 
 .friend-card button,
 .friend-request-card button {
@@ -401,7 +398,7 @@ body, html {
         width: 100%;
     }
 
-    /* MODIFICATION: Horizontal Scrolling */
+    /* Horizontal Scrolling for smaller devices */
     .main-content {
         flex-wrap: nowrap;
         overflow-x: auto;
