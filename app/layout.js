@@ -1,27 +1,19 @@
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// app/layout.js
+import * as React from 'react';
+import ThemeRegistry from './ThemeRegistry';
 
 export const metadata = {
-  title: "DP Messaging",
-  description: "For the special one",
+  title: 'DP Messaging', // You can change this
+  description: 'A messaging app', // You can change this
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body>
+        <ThemeRegistry options={{ key: 'mui' }}>
+          {children}
+        </ThemeRegistry>
       </body>
     </html>
   );
