@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import { MessageCircle } from 'lucide-react';
 
 import Sidebar from '@/app/sidebar/page';
-import Searchbar from '@/app/searchbar/page';
+import Searchbar2 from '@/app/searchbar2/page';
 
 export default function Page() {
     const router = useRouter();
