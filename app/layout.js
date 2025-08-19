@@ -1,5 +1,6 @@
 // app/layout.js
 import * as React from 'react';
+import './globals.css';
 import ThemeRegistry from './ThemeRegistry';
 export const metadata = {
   title: "DP Messaging",
