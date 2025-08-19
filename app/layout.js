@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeRegistry options={{ key: 'mui' }}>
           {children}
-        </Theme-Registry>
+        </ThemeRegistry> {/* <--- This is the corrected line */}
       </body>
     </html>
   );
