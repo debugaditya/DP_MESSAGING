@@ -4,10 +4,8 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
-// Dynamically import the Sidebar and Searchbar components
-const Sidebar = dynamic(() => import('@/app/sidebar/page'), { ssr: false });
-const Searchbar = dynamic(() => import('@/app/searchbar/page'), { ssr: false });
-
+import Sidebar from '@/app/sidebar/page';
+import Searchbar from '@/app/searchbar/page';
 export default function Page() {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(true);
