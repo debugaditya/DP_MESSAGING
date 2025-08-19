@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { MessageCircle } from 'lucide-react';
 
-const Sidebar = dynamic(() => import('@/app/sidebar/page'), { ssr: false });
-const Searchbar2 = dynamic(() => import('@/app/searchbar2/page'), { ssr: false });
+import Sidebar from '@/app/sidebar/page';
+import Searchbar from '@/app/searchbar/page';
 
 export default function Page() {
     const router = useRouter();
