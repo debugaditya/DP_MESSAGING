@@ -183,7 +183,7 @@ body, html {
     bottom: 16px;
     right: 20px;
     font-size: 0.8rem;
-    color: var(--text-secondary);
+    color: var(--accent-green); /* MODIFICATION: Changed to green */
     background-color: var(--bg-dark-primary);
     padding: 2px 6px;
     border-radius: 4px;
@@ -201,7 +201,7 @@ body, html {
 }
 
 .friend-card button { background-color: #21262D; color: var(--accent-red); }
-.friend-card button:hover { background-color: var(--accent-red); color: #FFFFFF; border-color: var(--accent-red); }
+.friend-card button:hover { background-color: var(--accent-red); color: #FFFFFF; border-color: var(--accent-red); } /* MODIFICATION: Red hover */
 .accept-btn { background-color: #21262D; color: var(--accent-green); }
 .accept-btn:hover { background-color: var(--accent-green); color: #FFFFFF; border-color: var(--accent-green); }
 .reject-btn { background-color: transparent; color: var(--text-secondary); }
