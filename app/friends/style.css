@@ -380,7 +380,7 @@ body, html {
 /* =================================
    Responsive Media Queries
    ================================= */
-@media (max-width: 1160px) {
+@media (max-width: 1030px) {
     .sidebar {
         position: fixed;
         transform: translateX(-100%);
