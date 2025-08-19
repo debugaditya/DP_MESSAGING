@@ -79,9 +79,63 @@ export default function Page() {
         fetchData();
     }, [admin, isMounted]);
 
-    const handleUnfriend = async (e, friendUsername) => { e.stopPropagation(); /* ... logic ... */ };
-    const handleAcceptRequest = async (e, requestUsername) => { e.stopPropagation(); /* ... logic ... */ };
-    const handleRejectRequest = async (e, requestUsername) => { e.stopPropagation(); /* ... logic ... */ };
+    const handleUnfriend = async (e, friendUsername) => {
+        e.stopPropagation();
+        try {
+            const response = await fetch('/api/handle', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username1: friendUsername, username2: admin, type: 'unfriend' }),
+            });
+            if (response.ok) {
+                setFriendsList(prev => prev.filter(f => f.USERNAME !== friendUsername));
+            } else {
+                console.error("Failed to unfriend:", await response.text());
+            }
+        } catch (error) {
+            console.error('Error unfriending:', error);
+        }
+    };
+
+    const handleAcceptRequest = async (e, requestUsername) => {
+        e.stopPropagation();
+        try {
+            const response = await fetch('/api/handle', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username1: admin, username2: requestUsername, type: 'accept' }),
+            });
+            if (response.ok) {
+                setFriendRequests(prev => prev.filter(req => req.USERNAME !== requestUsername));
+                const acceptedFriend = friendRequests.find(req => req.USERNAME === requestUsername);
+                if (acceptedFriend) {
+                    setFriendsList(prev => [...prev, acceptedFriend]);
+                }
+            } else {
+                console.error("Failed to accept request:", await response.text());
+            }
+        } catch (error) {
+            console.error('Error accepting request:', error);
+        }
+    };
+
+    const handleRejectRequest = async (e, requestUsername) => {
+        e.stopPropagation();
+        try {
+            const response = await fetch('/api/handle', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username1: admin, username2: requestUsername, type: 'cancel' }),
+            });
+            if (response.ok) {
+                setFriendRequests(prev => prev.filter(req => req.USERNAME !== requestUsername));
+            } else {
+                console.error("Failed to reject request:", await response.text());
+            }
+        } catch (error) {
+            console.error('Error rejecting request:', error);
+        }
+    };
 
     if (!isMounted) {
         return (
