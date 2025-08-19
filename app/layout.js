@@ -1,10 +1,11 @@
 // app/layout.js
 import * as React from 'react';
 import ThemeRegistry from './ThemeRegistry';
+import './style.css'; // Make sure your CSS file is imported here
 
 export const metadata = {
-  title: 'DP Messaging', // You can change this
-  description: 'For the special one', // You can change this
+  title: "DP Messaging",
+  description: "For the special one",
 };
 
 export default function RootLayout({ children }) {
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeRegistry options={{ key: 'mui' }}>
           {children}
-        </ThemeRegistry>
+        </Theme-Registry>
       </body>
     </html>
   );
