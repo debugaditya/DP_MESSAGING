@@ -4,7 +4,7 @@ import ThemeRegistry from './ThemeRegistry';
 
 export const metadata = {
   title: 'DP Messaging', // You can change this
-  description: 'A messaging app', // You can change this
+  description: 'For the special one', // You can change this
 };
 
 export default function RootLayout({ children }) {
