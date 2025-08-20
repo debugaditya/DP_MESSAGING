@@ -27,3 +27,19 @@ body, html {
     color: var(--text-primary);
     overflow-x: hidden;
 }
+/* --- Global Layout Styles --- */
+
+.page-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.page-container,
+.main-content,
+.chat-container,
+.message-content {
+  flex-grow: 1;
+  overflow: hidden;
+  min-width: 0; /* Prevents flexbox overflow issues */
+}
