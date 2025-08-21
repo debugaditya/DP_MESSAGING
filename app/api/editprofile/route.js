@@ -98,7 +98,10 @@ export async function POST(request) {
             // Upload the file stream to Cloudinary
             const uploadResult = await new Promise((resolve, reject) => {
                 const uploadStream = cloudinary.uploader.upload_stream(
-                    { folder: 'profile_photos' }, // Optional: specify a folder
+                    { 
+                      folder: 'profile_photos',
+                      public_id: username
+                    }, 
                     (error, result) => {
                         if (error) {
                             console.error('DEBUG (edit_profile): Cloudinary upload error:', error);
