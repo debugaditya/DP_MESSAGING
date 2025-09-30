@@ -1,4 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Oxanium:wght@500;700&display=swap');
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark-primary: #0A0A0A;
+  --bg-dark-secondary: #161B22;
+  --card-bg: #0A0A0A;
+  --card-border: rgba(70, 120, 100, 0.4);
+  --text-primary: #E6E6E6;
+  --text-secondary: #B0C0B0;
+  --text-dark: #000000;
+  --accent-green: #00FF80;
+  --sent-bubble-bg: #005C4B;
+  --received-bubble-bg: #FFFFFF;
+  --seen-blue: #53BDEB;
+  --font-primary: 'Outfit', sans-serif;
+  --font-display: 'Oxanium', monospace;
+}
+
+.page-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-dark-primary);
+}
 
 .chat-container {
   flex-grow: 1;
