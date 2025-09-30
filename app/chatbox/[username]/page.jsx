@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import socketService from '../../socket';
-import styles from './style.module.css';
+import './style.css';
 import '../../global.css'
 import dynamic from 'next/dynamic';
 
