@@ -1,5 +1,5 @@
 'use client';
-import './style.css';
+import './style.css'
 import { useRouter } from 'next/navigation';
 import socketService from '../socket';
 import { useState, useEffect } from 'react';
