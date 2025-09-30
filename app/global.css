@@ -43,3 +43,37 @@ body, html {
   overflow: hidden;
   min-width: 0; /* Prevents flexbox overflow issues */
 }
+.message-form input {
+  flex-grow: 1;
+  padding: 10px 16px;
+  background-color: #202C33;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: var(--font-primary);
+}
+
+.message-form input:focus {
+  outline: none;
+  border-color: var(--accent-green);
+}
+
+.message-form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--accent-green);
+  color: var(--bg-dark-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.message-form button:hover {
+  background-color: #00E676;
+}
